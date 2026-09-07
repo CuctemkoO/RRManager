@@ -10,13 +10,13 @@ DSM_APP_NAME = SYNOCOMMUNITY.RRManager.AppInstance
 PYTHON_PACKAGE = python311
 SPK_DEPENDS = "python311>=3.11.5-8"
 
-MAINTAINER = T-REX-XP
+MAINTAINER = CuctemkoO
 
 DESCRIPTION = RR Manager is a Redpill Recovery DSM application aimed to provide the ability to configure/update RR without booting to RR recovery. This package is for experienced users.
 STARTABLE = no
 DISPLAY_NAME = RR Manager
 
-HOMEPAGE = https://github.com/T-REX-XP/RRManager
+HOMEPAGE = https://github.com/CuctemkoO/RRmanager-v2
 
 CONF_DIR = src/conf
 SYSTEM_GROUP = http
