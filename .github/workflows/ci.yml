@@ -34,7 +34,7 @@ jobs:
           git clone --depth 1 https://github.com/SynoCommunity/spksrc.git /home/runner/work/spksrc
           docker pull ghcr.io/synocommunity/spksrc
           # Копируем наш проект внутрь структуры spksrc
-          cp -r /home/runner/work/${{ github.repository }} /spksrc/spk/rr-manager
+          cp -r $GITHUB_WORKSPACE /spksrc/spk/rr-manager
       - name: Install UPX
         uses: crazy-max/ghaction-upx@v3
         with:
