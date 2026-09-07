@@ -31,7 +31,7 @@ jobs:
 
       - name: Checkout SynoCommunity Source and Docker Image
         run: |
-          git clone https://github.com/SynoCommunity/spksrc.git /home/runner/work/spksrc
+          git clone --depth 1 https://github.com/SynoCommunity/spksrc.git /home/runner/work/spksrc
           docker pull ghcr.io/synocommunity/spksrc
       - name: Install UPX
         uses: crazy-max/ghaction-upx@v3
@@ -40,8 +40,9 @@ jobs:
       - name: Build Package
         run: |
           workdir=$(pwd)
-          docker run -v /home/runner/work/spksrc:/spksrc \
-              -v $workdir:/spksrc/spk/rr-manager \
+          docker run --rm \
+              -v /home/runner/work/spksrc:/spksrc \
+              -v $workdir:/spksrc/spk/rr-manager:ro \
               -v $workdir/packages:/spksrc/packages \
               -w /spksrc/spk/rr-manager \
               ghcr.io/synocommunity/spksrc \
