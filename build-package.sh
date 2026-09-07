@@ -33,7 +33,16 @@ npm run build
 
 # 2. Копирование собранных файлов в структуру пакета
 echo "📋 Копирование файлов..."
-cp -r src/htdocs/* "$BUILD_DIR/package/"
+mkdir -p "$BUILD_DIR/package"
+if [ -d "src/htdocs" ] && [ "$(ls -A src/htdocs 2>/dev/null)" ]; then
+    cp -r src/htdocs/* "$BUILD_DIR/package/"
+elif [ -d "src/app" ]; then
+    # Используем src/app как htdocs, если htdocs не существует
+    cp -r src/app/* "$BUILD_DIR/package/"
+else
+    echo "❌ Ошибка: neither src/htdocs nor src/app found"
+    exit 1
+fi
 
 # 3. Создание структуры SPK
 SPK_ROOT="$BUILD_DIR/spk_root"
@@ -43,10 +52,65 @@ mkdir -p "$SPK_ROOT/ui"
 mkdir -p "$SPK_ROOT/WEB"
 
 # Копирование конфига и скриптов
-cp src/conf/privilege "$SPK_ROOT/conf/"
-cp src/scripts/start-stop-status.sh "$SPK_ROOT/scripts/"
-chmod +x "$SPK_ROOT/scripts/start-stop-status.sh"
-cp src/ui/config.js "$SPK_ROOT/ui/"
+# Используем privilege_ как основной файл privilege
+if [ -f "src/conf/privilege_" ]; then
+    cp src/conf/privilege_ "$SPK_ROOT/conf/privilege"
+elif [ -f "src/conf/privilege" ]; then
+    cp src/conf/privilege "$SPK_ROOT/conf/privilege"
+else
+    echo "❌ Ошибка: файл privilege не найден"
+    exit 1
+fi
+
+# Копируем скрипт start-stop-status, если существует, иначе создаём пустой
+if [ -f "src/scripts/start-stop-status.sh" ]; then
+    cp src/scripts/start-stop-status.sh "$SPK_ROOT/scripts/"
+    chmod +x "$SPK_ROOT/scripts/start-stop-status.sh"
+else
+    # Создаём минимальный скрипт для DSM 7
+    cat > "$SPK_ROOT/scripts/start-stop-status.sh" << 'SCRIPT'
+#!/bin/sh
+case "$1" in
+    start)
+        exit 0
+        ;;
+    stop)
+        exit 0
+        ;;
+    status)
+        exit 0
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+SCRIPT
+    chmod +x "$SPK_ROOT/scripts/start-stop-status.sh"
+fi
+
+# Копируем ui/config.js или создаём его
+mkdir -p "$SPK_ROOT/ui"
+if [ -f "src/ui/config.js" ]; then
+    cp src/ui/config.js "$SPK_ROOT/ui/"
+elif [ -f "src/app/config" ]; then
+    # Если есть файл config, используем его как основу
+    cp src/app/config "$SPK_ROOT/ui/config.js"
+else
+    # Создаём стандартный config.js для ExtJS приложения
+    cat > "$SPK_ROOT/ui/config.js" << 'CONFIG'
+{
+    "id": "rr-manager",
+    "name": "RR Manager",
+    "url": "ui",
+    "description": "Redpill Recovery Manager",
+    "version": "1.0.0",
+    "icon": {
+        "small": "images/1x/rr-manager.png",
+        "large": "images/2x/rr-manager.png"
+    }
+}
+CONFIG
+fi
 
 # Копирование WEB файлов (наше приложение)
 cp -r "$BUILD_DIR/package"/* "$SPK_ROOT/WEB/"
@@ -85,14 +149,24 @@ EOF
 echo "🗜️ Архивация package.tgz..."
 cd "$SPK_ROOT"
 tar -czf "../package.tgz" --exclude='INFO' --exclude='descriptionenu.txt' *
-cd - > /dev/null
+cd "$OLDPWD"
 
 # 7. Создание финального .spk архива
 echo "📦 Создание финального .spk..."
 cd "$BUILD_DIR"
+mkdir -p "../$OUTPUT_DIR"
 SPK_FILE="../$OUTPUT_DIR/${PACKAGE_NAME}_${ARCH}_${DSM_VERSION}_${VERSION}.spk"
-tar -czf "$SPK_FILE" package.tgz INFO descriptionenu.txt conf scripts ui
-cd - > /dev/null
+# Проверяем, что все файлы существуют перед архивацией
+if [ ! -f "package.tgz" ]; then
+    echo "❌ Ошибка: package.tgz не найден"
+    exit 1
+fi
+if [ ! -f "spk_root/INFO" ]; then
+    echo "❌ Ошибка: INFO файл не найден"
+    exit 1
+fi
+tar -czf "$SPK_FILE" package.tgz spk_root/INFO spk_root/descriptionenu.txt spk_root/conf spk_root/scripts spk_root/ui
+cd "$OLDPWD"
 
 # 8. Очистка временных файлов
 echo "🧹 Очистка..."
