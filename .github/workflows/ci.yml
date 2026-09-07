@@ -12,9 +12,9 @@ jobs:
         - "aarch64-7.0"
         include:
         - target: x64-7.0
-          dsm_ver: 7.0
+          dsm_ver: 7.3
         - target: aarch64-7.0
-          dsm_ver: 7.0
+          dsm_ver: 7.3
     steps:
       - uses: actions/checkout@v4
       # Install Node.js
@@ -31,23 +31,18 @@ jobs:
 
       - name: Checkout SynoCommunity Source and Docker Image
         run: |
-          git clone --depth 1 https://github.com/SynoCommunity/spksrc.git /home/runner/work/spksrc
+          git clone https://github.com/SynoCommunity/spksrc.git /home/runner/work/spksrc
           docker pull ghcr.io/synocommunity/spksrc
-          
-          # Создаем структуру папок внутри spksrc
-          mkdir -p /home/runner/work/spksrc/spk/rr-manager
-          
-          # Копируем наш проект внутрь структуры spksrc
-          cp -r $GITHUB_WORKSPACE/* /home/runner/work/spksrc/spk/rr-manager/
       - name: Install UPX
         uses: crazy-max/ghaction-upx@v3
         with:
           install-only: true
       - name: Build Package
         run: |
-          cd /home/runner/work/spksrc
-          docker run --rm \
-              -v /home/runner/work/spksrc:/spksrc \
+          workdir=$(pwd)
+          docker run -v /home/runner/work/spksrc:/spksrc \
+              -v $workdir:/spksrc/spk/rr-manager \
+              -v $workdir/packages:/spksrc/packages \
               -w /spksrc/spk/rr-manager \
               ghcr.io/synocommunity/spksrc \
               make arch-${{ matrix.target }}
