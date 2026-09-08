@@ -1,0 +1,40 @@
+{
+    "defaults": {
+        "run-as": "package"
+    },
+    "join-groupname": "http",
+    "username": "sc-rr-manager",
+    "groupname": "synocommunity",
+    "ctrl-script": [
+        {
+            "action": "start",
+            "run-as": "package"
+        },
+        {
+            "action": "stop",
+            "run-as": "package"
+        },
+        {
+            "action": "preuninst",
+            "run-as": "package"
+        },
+        {
+            "action": "postuninst",
+            "run-as": "package"
+        },
+        {
+            "action": "postinst",
+            "run-as": "package"
+        }
+    ],
+    "executable": [
+        {
+            "relpath": "app/scripts/getConfig.cgi",
+            "run-as": "package"
+        },
+        {
+            "relpath": "app/scripts/getAddons.cgi",
+            "run-as": "package"
+        }
+    ]
+}

@@ -1,0 +1,99 @@
+[app]
+app_name = "RR Manager"
+description = "RR Manager - Redpill Recovery Configuration Tool"
+index_title = "Help Documentation"
+
+[ui]
+greetings_text = "Welcome to RR Manager!"
+tab_general = "Overview"
+tab_addons = "Add-ons"
+tab_configuration = "Settings"
+tab_debug = "Debug"
+
+alt_confirm = "Confirm"
+confirm_system_clean_up_msg = "Do you want to run the system partition cleanup script?"
+confirm_system_clean_up_title = "Confirm System Cleanup"
+
+upload_file_dialog_title = "Upload File"
+
+loading_text = "Loading..."
+system_info = "System Information"
+
+rr_actions = "RR Loader Actions"
+required_tasks_is_missing = "The following required tasks are missing: {0}. Creating them will require administrator privileges. Continue?"
+tasks_created_msg = "Tasks created successfully. Please restart the RR Manager application."
+share_notfound_msg = "Warning: The shared folder '{0}' was not found. Please create it and restart the application."
+required_components_missing-title = "Missing Required Components"
+required_components_missing_spinner_msg = "Required system tasks are missing: {0}. Please complete the initial setup before using RR Manager."
+update_confirm_title = "Confirm Update"
+uploading_file = "Uploading file..."
+save_addons_changes = "Save Add-on Changes"
+
+rr_config_applied = "RR configuration applied successfully. Please restart your NAS to apply changes."
+checking_dependencies_loader = "Checking dependencies..."
+
+section_rr_actions = "Update RR Loader"
+run_update = "Upload Update File"
+
+frm_validation_fill_required_fields = "Please fill in all required fields."
+frm_validation_no_change = "No changes to save"
+
+save_addons_btn = "Save Add-ons"
+
+col_system = "System"
+col_installed = "Installed"
+col_version = "Version"
+col_name = "Name"
+col_description = "Description"
+
+prompt_update_available_title = "Update Available"
+prompt_update_available_message = "A new version ({0}) of RR is available. Would you like to download it using Download Station?"
+
+addons_all = "All"
+addons_system = "System"
+
+from_pc = "From Computer"
+from_ds = "From DiskStation"
+
+image_name = "Image Name"
+
+[upload_file_dialog]
+lb_select_update_file = "Select update file:"
+choose_file_title = "Choose Update File"
+select_file = "Select File"
+file_uploading_succesfull_msg = "File uploaded successfully. Start the update procedure?"
+file_uploading_failed_msg = "Failed to upload file."
+completed = "Completed:"
+unable_update_rr_msg = "Unable to update RR: {0}. Please upload the file and try again."
+update_rr_completed = "RR updated successfully. Please restart your NAS."
+update_rr_progress_msg = "Updating RR: {0}. Status: {1}."
+update_rr_error_msg = "Failed to update RR. Status code: {0}, Reason: {1}"
+update_rr_confirmation = "Current RR version: {0}. Update file version: {1}."
+update_rr_confirmation_title = "Confirm Update"
+upload_update_file_form_validation_invalid_msg = "Please select an update or updateAll file before uploading."
+btn_proceed = "Proceed"
+
+[health_panel]
+btn_from_pc = "From Computer"
+btn_from_ds = "From DiskStation"
+
+[update_available_dialog]
+checkbox_dont_show_again = "Don't show again"
+
+[widget]
+danger_status = "Critical!"
+danger_status_message = "Your RR loader is not functioning properly."
+
+attention_status = "Attention!"
+attention_status_message = "Your RR loader is waiting for a reboot."
+
+good_status = "Healthy"
+good_status_message = "Your RR loader is operating normally."
+
+[errors]
+error_config_parse = "Failed to parse configuration file."
+success_task_created = "Task created successfully."
+error_permission = "Permission denied."
+error_network = "Network error."
+error_timeout = "Operation timed out."
+lbl_model_patch = "Model Compatibility Patch"
