@@ -29,9 +29,9 @@ jobs:
       - name: Webpack Build
         run: npm run build
 
-      - name: Checkout SynoCommunity Source and Docker Image
+      - name: Checkout DigitalBox98 Source and Docker Image
         run: |
-          git clone https://github.com/SynoCommunity/spksrc.git /home/runner/work/spksrc
+          git clone https://github.com/DigitalBox98/spksrc.git /home/runner/work/spksrc
           docker pull ghcr.io/synocommunity/spksrc
       - name: Install UPX
         uses: crazy-max/ghaction-upx@v3
