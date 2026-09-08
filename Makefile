@@ -7,8 +7,8 @@ DSM_UI_DIR = app
 DSM_UI_CONFIG = src/app/config
 DSM_APP_NAME = SYNOCOMMUNITY.RRManager.AppInstance
 
-PYTHON_PACKAGE = python311
-SPK_DEPENDS = "python311>=3.11.5-8"
+PYTHON_PACKAGE = python310
+SPK_DEPENDS = "python310>=3.10.13-0"
 
 MAINTAINER = CuctemkoO
 
@@ -33,7 +33,7 @@ include ../../mk/spksrc.directories.mk
 SERVICE_WIZARD_SHARE = wizard_download_dir
 WIZARDS_DIR = $(WORK_DIR)/generated-wizards
 WIZARDS = install_uifile upgrade_uifile
-SUPPORTED_LANGUAGES = fre
+SUPPORTED_LANGUAGES = enu rus
 
 wizards: generated-wizards
 include ../../mk/spksrc.spk.mk

@@ -1,59 +1,99 @@
 [app]
 app_name = "RR Manager"
-description = "RR Manager"
-index_title = "Документація допомоги"
+description = "RR Manager - Инструмент настройки Redpill Recovery"
+index_title = "Документация"
 
 [ui]
-greetings_text = "Ласкаво просимо до RR Manager!"
-tab_general = "Загальне"
-tab_addons = "Додатки"
-tab_configuration = "Конфігурація"
-tab_debug = "Відлагодження"
+greetings_text = "Добро пожаловать в RR Manager!"
+tab_general = "Обзор"
+tab_addons = "Дополнения"
+tab_configuration = "Настройки"
+tab_debug = "Отладка"
 
-lb_select_update_file = "Будь ласка, виберіть файл оновлення:"
-upload_update_file_form_validation_invalid_msg = "Будь ласка, виберіть файл оновлення/оновленняВсіх перед початком завантаження."
-alt_confirm = "Підтвердити"
-update_rr_progress_msg = "Оновлення RR у процесі: {0}. Статус: {1}."
-update_rr_completed = "RR успішно оновлено. Будь ласка, перезавантажте NAS."
-update_rr_error_msg = "Не вдалося оновити RR. Код статусу: {0}, Причина: {1}"
-update_rr_confirmation = "Поточна версія RR: {0}. Версія файлу оновлення: {1}"
-update_rr_confirmation_title = "Підтвердження оновлення"
-confirm_system_clean_up_msg = "Бажаєте запустити скрипт очищення системного розділу?"
-confirm_system_clean_up_title = "Підтвердження очищення системи"
+alt_confirm = "Подтвердить"
+confirm_system_clean_up_msg = "Запустить скрипт очистки системного раздела?"
+confirm_system_clean_up_title = "Подтверждение очистки системы"
 
-unable_update_rr_msg = "Не вдалося оновити RR: {0}. Будь ласка, завантажте файл та спробуйте знову."
-upload_file_dialog_title = "Завантажити файл"
+upload_file_dialog_title = "Загрузка файла"
 
-select_file = "Вибрати файл"
-loading_text = "Завантаження..."
-system_info = "🖥️Інформація про систему:"
+loading_text = "Загрузка..."
+system_info = "Информация о системе"
 
-rr_actions = "Дії RR Loader"
-required_tasks_is_missing = "В системі відсутні наступні необхідні задачі {0}. Це потребуватиме введення вашого паролю. Бажаєте створити їх?"
-tasks_created_msg = "Задачі успішно створено. Будь ласка, перезапустіть додаток RR Manager."
-share_notfound_msg = "Увага! Папка {0} не знайдена. Будь ласка, створіть спільний доступ/папку та перезапустіть додаток."
-required_components_missing_title = "Відсутні необхідні компоненти"
-required_components_missing_spinner_msg = "Схоже, що деякі задачі відсутні в системі: {0}. Будь ласка, завершіть процес входу перед початком використання RR Manager."
-file_uploading_succesfull_msg = "Файл успішно завантажено. Бажаєте запустити процедуру оновлення?"
-update_confirm_title = "Підтвердження оновлення"
-uploading_file = "Завантаження файлу..."
-save_addons_changes = "Зберегти зміни додатків"
+rr_actions = "Действия RR Loader"
+required_tasks_is_missing = "Отсутствуют необходимые задачи: {0}. Для их создания требуются права администратора. Продолжить?"
+tasks_created_msg = "Задачи успешно созданы. Перезапустите приложение RR Manager."
+share_notfound_msg = "Внимание: Общая папка '{0}' не найдена. Создайте её и перезапустите приложение."
+required_components_missing-title = "Отсутствуют необходимые компоненты"
+required_components_missing_spinner_msg = "Отсутствуют системные задачи: {0}. Завершите начальную настройку перед использованием RR Manager."
+update_confirm_title = "Подтверждение обновления"
+uploading_file = "Загрузка файла..."
+save_addons_changes = "Сохранить изменения дополнений"
 
-rr_config_applied="Конфігурація RR успішно застосована. Будь ласка, перезавантажте NAS для застосування змін."
-checking_dependencies_loader="Перевірка залежностей..."
-file_uploading_failed_msg="Помилка завантаження файлу."
-completed="Завершено:"
+rr_config_applied = "Конфигурация RR успешно применена. Перезагрузите NAS для применения изменений."
+checking_dependencies_loader = "Проверка зависимостей..."
 
-section_rr_actions="Дії RR"
-run_update="Запустити оновлення"
+section_rr_actions = "Обновление RR Loader"
+run_update = "Загрузить файл обновления"
 
-frm_validation_fill_required_fields="Будь ласка, заповніть необхідні поля."
-frm_validation_no_change="Немає змін для збереження"
+frm_validation_fill_required_fields = "Заполните все обязательные поля."
+frm_validation_no_change = "Нет изменений для сохранения"
 
-save_addons_btn="Зберегти додатки"
+save_addons_btn = "Сохранить дополнения"
 
-col_system="Система"
-col_installed="Встановлено"
-col_version="Версія"
-col_name="Назва"
-col_description="Опис"
+col_system = "Системный"
+col_installed = "Установлен"
+col_version = "Версия"
+col_name = "Имя"
+col_description = "Описание"
+
+prompt_update_available_title = "Доступно обновление"
+prompt_update_available_message = "Доступна новая версия RR ({0}). Загрузить её через Download Station?"
+
+addons_all = "Все"
+addons_system = "Системные"
+
+from_pc = "С компьютера"
+from_ds = "С DiskStation"
+
+image_name = "Имя образа"
+
+[upload_file_dialog]
+lb_select_update_file = "Выберите файл обновления:"
+choose_file_title = "Выбор файла обновления"
+select_file = "Выбрать файл"
+file_uploading_succesfull_msg = "Файл успешно загружен. Запустить процедуру обновления?"
+file_uploading_failed_msg = "Ошибка загрузки файла."
+completed = "Завершено:"
+unable_update_rr_msg = "Не удалось обновить RR: {0}. Загрузите файл и повторите попытку."
+update_rr_completed = "RR успешно обновлён. Перезагрузите NAS."
+update_rr_progress_msg = "Обновление RR: {0}. Статус: {1}."
+update_rr_error_msg = "Ошибка обновления RR. Код статуса: {0}, Причина: {1}"
+update_rr_confirmation = "Текущая версия RR: {0}. Версия файла обновления: {1}."
+update_rr_confirmation_title = "Подтверждение обновления"
+upload_update_file_form_validation_invalid_msg = "Выберите файл update или updateAll перед загрузкой."
+btn_proceed = "Продолжить"
+
+[health_panel]
+btn_from_pc = "С компьютера"
+btn_from_ds = "С DiskStation"
+
+[update_available_dialog]
+checkbox_dont_show_again = "Не показывать снова"
+
+[widget]
+danger_status = "Критично!"
+danger_status_message = "RR Loader работает некорректно."
+
+attention_status = "Внимание!"
+attention_status_message = "RR Loader ожидает перезагрузки."
+
+good_status = "Исправен"
+good_status_message = "RR Loader работает нормально."
+
+[errors]
+error_config_parse = "Ошибка разбора конфигурационного файла."
+success_task_created = "Задача успешно создана."
+error_permission = "Отказано в доступе."
+error_network = "Ошибка сети."
+error_timeout = "Время операции истекло."
+lbl_model_patch = "Патч совместимости модели"
