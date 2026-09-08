@@ -7,16 +7,16 @@ DSM_UI_DIR = app
 DSM_UI_CONFIG = src/app/config
 DSM_APP_NAME = SYNOCOMMUNITY.RRManager.AppInstance
 
-PYTHON_PACKAGE = python311
-SPK_DEPENDS = "python311>=3.11.5-8"
+PYTHON_PACKAGE = python310
+SPK_DEPENDS = "python310>=3.10.13-0"
 
-MAINTAINER = T-REX-XP
+MAINTAINER = CuctemkoO
 
 DESCRIPTION = RR Manager is a Redpill Recovery DSM application aimed to provide the ability to configure/update RR without booting to RR recovery. This package is for experienced users.
 STARTABLE = no
 DISPLAY_NAME = RR Manager
 
-HOMEPAGE = https://github.com/T-REX-XP/RRManager
+HOMEPAGE = https://github.com/CuctemkoO/RRmanager-v2
 
 CONF_DIR = src/conf
 SYSTEM_GROUP = http
@@ -33,7 +33,7 @@ include ../../mk/spksrc.directories.mk
 SERVICE_WIZARD_SHARE = wizard_download_dir
 WIZARDS_DIR = $(WORK_DIR)/generated-wizards
 WIZARDS = install_uifile upgrade_uifile
-SUPPORTED_LANGUAGES = fre
+SUPPORTED_LANGUAGES = enu rus
 
 wizards: generated-wizards
 include ../../mk/spksrc.spk.mk
@@ -103,7 +103,7 @@ rr-manager_extra_install:
 		install -m 644 src/app/help/$${language}/simpleapp_index.html $(STAGING_DIR)/app/help/$${language}/simpleapp_index.html; \
 	done
 	install -m 755 -d $(STAGING_DIR)/app/texts
-	for language in enu rus chs cht krn; do \
+	for language in $(SUPPORTED_LANGUAGES); do \
 		install -m 755 -d $(STAGING_DIR)/app/texts/$${language}; \
 		install -m 644 src/app/texts/$${language}/strings $(STAGING_DIR)/app/texts/$${language}/strings; \
 	done
